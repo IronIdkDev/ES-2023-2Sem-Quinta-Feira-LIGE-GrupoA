@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 
 public class FileLocationFrame extends JFrame {
@@ -17,7 +19,8 @@ public class FileLocationFrame extends JFrame {
     private JTextField locationTextField;
     private JButton browseButton;
     private JButton okButton;
-
+    private static final Logger LOGGER = Logger.getLogger("FileLocationFrame");
+    
     public FileLocationFrame() {
         super("Selecionar localização do ficheiro");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -84,9 +87,9 @@ public class FileLocationFrame extends JFrame {
 					web.ReadWeb(url);
 					web.URLToCSV(url);
 				} catch (MalformedURLException e) {
-					e.printStackTrace();
+					LOGGER.log(Level.SEVERE, "Exception occurred", e);
 				} catch (IOException e) {
-					e.printStackTrace();
+					LOGGER.log(Level.SEVERE, "Exception occurred", e);
 				}
         }else {
         	Web web = new Web();
@@ -96,14 +99,15 @@ public class FileLocationFrame extends JFrame {
 					web.ReadWeb(url);
 					web.URLToCSV(url);
 				} catch (MalformedURLException e) {
-					e.printStackTrace();
+					LOGGER.log(Level.SEVERE, "Exception occurred", e);
 				} catch (IOException e) {
-					e.printStackTrace();
+					LOGGER.log(Level.SEVERE, "Exception occurred", e);
 				}
         }
         dispose();
     }
 
+    
     // Métodos para testar
 
     public JTextField getLocationTextField() {
