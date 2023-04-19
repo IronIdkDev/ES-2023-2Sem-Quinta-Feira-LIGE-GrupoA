@@ -14,7 +14,6 @@ import com.google.gson.stream.JsonWriter;
 
 public class Web {
 
-
 	    //usamos a classe URL para criar uma conexão com a página web e a classe BufferedReader para ler o conteúdo da página linha por linha
 	    public void ReadWeb(URL url) {
 	        try {

@@ -104,7 +104,6 @@ public class FileLocationFrame extends JFrame {
         dispose();
     }
 
-    
     // Métodos para testar
 
     public JTextField getLocationTextField() {
