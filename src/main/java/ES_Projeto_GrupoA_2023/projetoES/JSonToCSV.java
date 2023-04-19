@@ -80,7 +80,6 @@ public class JSonToCSV{
                 LOGGER.info("O arquivo temporário foi excluído com sucesso!");
              else
                 LOGGER.info("Não foi possível excluir o arquivo temporário.");
-
         }  catch (IOException e) {
             LOGGER.info("Erro na leitura ou na escrita do novo ficheiro CSV");
         }
