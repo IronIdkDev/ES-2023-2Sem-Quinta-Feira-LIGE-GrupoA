@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.opencsv.CSVWriter;
 import java.util.logging.Logger;
 
-
 public class JSonToCSV{
 
     private Iterator<JsonNode> elements;
