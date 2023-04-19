@@ -34,13 +34,10 @@ public class JSonToCSVTest {
                 Object obj2 = mapper.readValue(arquivo2, Object.class);
                 Assert.assertEquals(obj1, obj2);
             } catch (StreamReadException e) {
-
                 e.printStackTrace();
             } catch (DatabindException e) {
-
                 e.printStackTrace();
             } catch (IOException e) {
-
                 e.printStackTrace();
             }
 
