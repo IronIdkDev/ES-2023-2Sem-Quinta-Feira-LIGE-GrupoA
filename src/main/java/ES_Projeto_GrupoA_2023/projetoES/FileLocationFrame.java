@@ -17,6 +17,7 @@ public class FileLocationFrame extends JFrame {
     private JTextField locationTextField;
     private JButton browseButton;
     private JButton okButton;
+private static final Logger LOGGER = Logger.getLogger("FileLocationFrame");
 
     public FileLocationFrame() {
         super("Selecionar localização do ficheiro");
@@ -84,9 +85,9 @@ public class FileLocationFrame extends JFrame {
 					web.ReadWeb(url);
 					web.URLToCSV(url);
 				} catch (MalformedURLException e) {
-					e.printStackTrace();
+					LOGGER.severe("Erro");
 				} catch (IOException e) {
-					e.printStackTrace();
+					LOGGER.severe("Erro: Não foi possível encontrar o ficheiro ou ficheiro inválido");
 				}
         }else {
         	Web web = new Web();
@@ -96,9 +97,9 @@ public class FileLocationFrame extends JFrame {
 					web.ReadWeb(url);
 					web.URLToCSV(url);
 				} catch (MalformedURLException e) {
-					e.printStackTrace();
+					LOGGER.severe("Erro");
 				} catch (IOException e) {
-					e.printStackTrace();
+					LOGGER.severe("Erro: Mão foi possível encontrar o ficheiro ou ficheiro inválido");
 				}
         }
         dispose();
