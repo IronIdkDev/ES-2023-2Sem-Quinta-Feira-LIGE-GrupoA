@@ -124,7 +124,7 @@ public class CSVToJSon {
 		} catch (DatabindException e) {
 			LOGGER.severe("Erro: problemas no mapeamento do ficheiro");
 		} catch (IOException e) {
-			LOGGER.severe("Erro: Mão foi possível encontrar o ficheiro ou ficheiro inválido");
+			LOGGER.severe("Erro: Não foi possível encontrar o ficheiro ou ficheiro inválido");
 		}
         
         LOGGER.info("Sucesso: ficheiro criado com sucesso");

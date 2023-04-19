@@ -3,15 +3,11 @@ package ES_Projeto_GrupoA_2023.projetoES;
 import java.io.*;
 import java.util.Iterator;
 
-import com.fasterxml.jackson.core.JsonGenerator.Feature;
-import com.fasterxml.jackson.core.exc.StreamWriteException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.dataformat.csv.CsvMapper;
-import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.opencsv.CSVWriter;
+import java.util.logging.Logger;
 
 
 public class JSonToCSV{
@@ -19,27 +15,15 @@ public class JSonToCSV{
     private Iterator<JsonNode> elements;
     private CSVWriter writer;
 
+    private static final  String CSVFILENAMETEMP = "src/main/resources/data_temp.csv";
+    private static final  String CSVFILENAME = "src/main/resources/data.csv";
+    private static final Logger LOGGER = Logger.getLogger("JSONTOCSV");
+
     public JSonToCSV(String fileName) throws IOException {
         JsonNode rootNode = new ObjectMapper().readTree(new File(fileName));
         elements =  rootNode.elements();
-        writer = new CSVWriter(new FileWriter(fileName));
+        writer = new CSVWriter(new FileWriter(CSVFILENAMETEMP));
         createSchema();
-    }
-
-    private void createSchema(){
-        String[] line = new String[11];
-        line[0] = "Curso";
-        line[1] = "Unidade Curricular";
-        line[2] = "Turno";
-        line[3] = "Turma";
-        line[4] = "Inscritos no turno";
-        line[5] = "Dia da semana";
-        line[6] = "Hora início da aula";
-        line[7] = "Hora fim da aula";
-        line[8] = "Data da aula";
-        line[9] = "Sala atribuída à aula";
-        line[10] = "Lotação da sala";
-        writer.writeNext(line);
     }
 
     public void convertFile() throws IOException {
@@ -60,34 +44,46 @@ public class JSonToCSV{
             writer.writeNext(line);
         }
         writer.close();
-        changeCommas(new File("src/main/resources/data_temp.csv"));
+        changeCommas();
     }
 
-    private void changeCommas(File csvFile){
-        try{
-            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/data_temp.csv"));
-            BufferedWriter writer2 = new BufferedWriter(new FileWriter("src/main/resources/data.csv"));
+    private void createSchema(){
+        String[] line = new String[11];
+        line[0] = "Curso";
+        line[1] = "Unidade Curricular";
+        line[2] = "Turno";
+        line[3] = "Turma";
+        line[4] = "Inscritos no turno";
+        line[5] = "Dia da semana";
+        line[6] = "Hora início da aula";
+        line[7] = "Hora fim da aula";
+        line[8] = "Data da aula";
+        line[9] = "Sala atribuída à aula";
+        line[10] = "Lotação da sala";
+        writer.writeNext(line);
+    }
+
+    private void changeCommas() {
+        try (
+                BufferedReader reader = new BufferedReader(new FileReader(CSVFILENAMETEMP));
+                BufferedWriter writer2 = new BufferedWriter(new FileWriter(CSVFILENAME));
+        ) {
+
             String line;
             while ((line = reader.readLine()) != null) {
-                line = line.replaceAll(",", ";");
+                line = line.replace(",", ";");
                 writer2.write(line);
                 writer2.newLine();
             }
             reader.close();
-            writer2.close();
+            if (new File(CSVFILENAMETEMP).delete())
+                LOGGER.info("O arquivo temporário foi excluído com sucesso!");
+             else
+                LOGGER.info("Não foi possível excluir o arquivo temporário.");
 
-            new File("src/main/resources/data_temp.csv").delete();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
 
-    public static void main(String[] args){
-        try {
-            JSonToCSV x = new JSonToCSV("src/main/resources/example-schedule.json");
-           x.convertFile();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        }  catch (IOException e) {
+            LOGGER.info("Erro na leitura ou na escrita do novo ficheiro CSV");
         }
     }
 }
