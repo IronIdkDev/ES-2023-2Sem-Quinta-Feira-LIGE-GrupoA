@@ -61,9 +61,7 @@ class CSVToJsonTest {
         } catch (FileNotFoundException e) {
             assertEquals("Erro:O ficheiro não foi encontrado! Verifique se o path está correto", e.getMessage());
         }
-    }
-   
-    @Test
+    }@Test
     void testarCsvValidationException() {
         try {
             CSVToJson csv = new CSVToJson();
