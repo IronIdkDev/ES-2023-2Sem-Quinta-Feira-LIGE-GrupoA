@@ -1,5 +1,7 @@
 package softwareeng.project;
 
+import com.opencsv.exceptions.CsvValidationException;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -172,7 +174,14 @@ public class ConvertSchedules extends JFrame {
 
     private void convertCSVToJson(String filelocation){
         CSVToJson csv = new CSVToJson();
-        boolean success = csv.convertCSVToJson(filelocation);
+        boolean success = false;
+        try {
+            success = csv.convertCSVToJson(filelocation);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
+        }
         if(success){
             JOptionPane.showMessageDialog(this, "CSV file converted to JSON successfully!");
         } else {

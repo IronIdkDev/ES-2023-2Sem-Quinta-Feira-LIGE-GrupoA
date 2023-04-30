@@ -1,4 +1,5 @@
 
+<<<<<<< Updated upstream
 b
 java:S1192p"FDefine a constant instead of duplicating this literal "Error" 7 times.(ÉÇ¾h8…ñ¾Èú0
 U
@@ -7,3 +8,31 @@ N
 java:S1135Å"2Complete the task associated to this TODO comment.(ÜªÚîùÿÿÿÿ
 N
 java:S1135Ø"2Complete the task associated to this TODO comment.(³å²ãüÿÿÿÿ
+=======
+h	java:S112µ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¢”—Ãü0
+h	java:S112·"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8£”—Ãü0
+v
+java:S1192Û"SDefine a constant instead of duplicating this literal "Exception occurred" 6 times.( ñöøÿÿÿÿ8×’Â—ü0
+b
+java:S1192r"FDefine a constant instead of duplicating this literal "Error" 7 times.(ÉÇ¾h8…ñ¾Èú0
+j
+java:S1192Ò"GDefine a constant instead of duplicating this literal "webcal" 4 times.(İŞÆğûÿÿÿÿ8Ú’Â—ü0
+U
+java:S11610":Add the "@Override" annotation above this method signature(†§şıÿÿÿÿ
+h
+java:S2147¶"ECombine this catch with the one at line 180, which has the same body.(àã¨¨şÿÿÿÿ8”•—Ãü0
+Q
+java:S1172Ï"3Remove this unused method parameter "fileLocation".(Ò®¤8¤”Â—ü0
+N
+java:S1135Î"2Complete the task associated to this TODO comment.(ÜªÚîùÿÿÿÿ
+c
+java:S2147Ü"ECombine this catch with the one at line 218, which has the same body.(Ãôş•8©”Â—ü0
+c
+java:S2147è"ECombine this catch with the one at line 230, which has the same body.(Ãôş•8®”Â—ü0
+V
+java:S1172ñ"3Remove this unused method parameter "fileLocation".(·€šÂüÿÿÿÿ8³”Â—ü0
+N
+java:S1135ï"2Complete the task associated to this TODO comment.(³å²ãüÿÿÿÿ
+c
+java:S2147ş"ECombine this catch with the one at line 252, which has the same body.(Ãôş•8µ”Â—ü0
+>>>>>>> Stashed changes

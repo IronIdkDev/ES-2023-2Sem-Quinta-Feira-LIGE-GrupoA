@@ -2,6 +2,8 @@ package softwareeng.project;
 
 // TODO: Delete this Class. All elements must be moved to other classes
 
+import com.opencsv.exceptions.CsvValidationException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -115,7 +117,13 @@ public class FileLocationFrame extends JFrame {
 
     private void convertCSVToJson(String filelocation){
         CSVToJson csv = new CSVToJson();
-        csv.convertCSVToJson(filelocation);
+        try {
+            csv.convertCSVToJson(filelocation);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void convertJsonToCSV(String filelocation) {
