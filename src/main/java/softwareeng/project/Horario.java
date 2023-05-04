@@ -1,9 +1,5 @@
 package softwareeng.project;
-
-import com.google.gson.Gson;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -96,4 +92,42 @@ public class Horario {
         }
         return list;
     }
+    public List<Session> getHorarioPorUnidadeCurricular(String unidadeCurricular, String path){
+        File file = new File(path);
+        List<Session> list = new ArrayList<>();
+        if(path.endsWith("csv")){
+            CSVToJson csv1 = new CSVToJson();
+            list = csv1.convertCSVToArray(path);
+            Iterator<Session> iterator= list.iterator();
+            while(iterator.hasNext()) {
+                Session aux = iterator.next();
+                if (!aux.getCurso().contains(curso) || !aux.getTurma().contains(turma) || !aux.getUc().contains(unidadeCurricular)) {
+                    iterator.remove();
+                }
+            }
+        }else if(path.endsWith("json")){
+
+            list = JSonToCSV.convertJsonToArray(path);
+            Iterator<Session> iterator= list.iterator();
+            while(iterator.hasNext()) {
+                Session aux = iterator.next();
+                if (!aux.getCurso().contains(curso) || !aux.getTurma().contains(turma) || !aux.getUc().contains(unidadeCurricular)) {
+                    iterator.remove();
+                }
+            }
+
+        }else{
+            LOGGER.severe("Não foi possível encontrar ficheiro");
+        }
+
+        list.sort(Comparator.comparing(Session:: getDate));
+        list = getWeek(list);
+
+        return list;
+    }
+
+
+
 }
+
+

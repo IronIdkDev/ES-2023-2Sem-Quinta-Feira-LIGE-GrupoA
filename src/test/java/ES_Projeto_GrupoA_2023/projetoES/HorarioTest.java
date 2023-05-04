@@ -11,42 +11,49 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
- * Classe de testes unitários da classe HorarioTest
+ * Classe de testes unitários da classe Horario
  */
 class HorarioTest {
 
-    private Horario h = new Horario("LIGE", 1, "C5");
-
-
     @Test
-    void getCurso() {
+    void testGetCurso() {
+        Horario h = new Horario("LIGE", 1, "C5");
         assertEquals("LIGE", h.getCurso());
     }
 
     @Test
-    void setCurso() {
+    void testSetCurso() {
+        Horario h = new Horario("LIGE", 1, "C5");
         h.setCurso("LIGE-PL");
         assertEquals("LIGE-PL", h.getCurso());
     }
 
     @Test
-    void getSemanaCSV() {
+    void testGetHorarioCSV() {
         Horario horario = new Horario("LP", 1, "PA3");
         List<Session> list = horario.getHorario("data.csv");
-        assertEquals("LP",list.get(0).getCurso());
-        assertEquals("Psicologia Social",list.get(0).getUc());
-        assertEquals("PA4; PA3; PA2; PA1",list.get(0).getTurma());
-
+        assertEquals("LP", list.get(0).getCurso());
+        assertEquals("Psicologia Social", list.get(0).getUc());
+        assertEquals("PA4; PA3; PA2; PA1", list.get(0).getTurma());
     }
+
     @Test
-    void getSemanaJson() {
+    void testGetHorarioJson() {
         Horario horario = new Horario("LP", 1, "PA3");
         List<Session> list = horario.getHorario("horario.json");
-        assertEquals("LP",list.get(0).getCurso());
-        assertEquals("Psicologia Social",list.get(0).getUc());
-        assertEquals("PA4, PA3, PA2, PA1",list.get(0).getTurma());
-
+        assertEquals("LP", list.get(0).getCurso());
+        assertEquals("Psicologia Social", list.get(0).getUc());
+        assertEquals("PA4, PA3, PA2, PA1", list.get(0).getTurma());
     }
 
-
+    //Teste para verificar se a lista retornada contém apenas sessões com a unidade curricular especificada
+    @Test
+    void testGetHorarioPorUnidadeCurricular() {
+        Horario horario = new Horario("LP", 1, "PA3");
+        List<Session> list = horario.getHorarioPorUnidadeCurricular("Psicologia Social", "horario.json");
+        assertEquals(1, list.size());
+        for (Session session : list) {
+            assertEquals("Psicologia Social", session.getUc());
+        }
+    }
 }
