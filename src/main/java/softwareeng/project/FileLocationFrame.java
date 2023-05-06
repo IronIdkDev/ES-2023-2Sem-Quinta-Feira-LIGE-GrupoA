@@ -83,7 +83,11 @@ public class FileLocationFrame extends JFrame {
         String filelocation = locationTextField.getText();
         switch (getFileExtension(filelocation)) {
             case "csv":
-                convertCSVToJson(filelocation);
+                try {
+                    convertCSVToJson(filelocation);
+                } catch (CsvValidationException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "json":
                 convertJsonToCSV(filelocation);
@@ -115,15 +119,9 @@ public class FileLocationFrame extends JFrame {
         return filename.substring(extensionIndex + 1);
     }
 
-    private void convertCSVToJson(String filelocation){
+    private void convertCSVToJson(String filelocation) throws CsvValidationException {
         CSVToJson csv = new CSVToJson();
-        try {
-            csv.convertCSVToJson(filelocation);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (CsvValidationException e) {
-            throw new RuntimeException(e);
-        }
+        csv.convertCSVToJson(filelocation);
     }
 
     private void convertJsonToCSV(String filelocation) {

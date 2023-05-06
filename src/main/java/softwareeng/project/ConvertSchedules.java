@@ -175,13 +175,7 @@ public class ConvertSchedules extends JFrame {
     private void convertCSVToJson(String filelocation){
         CSVToJson csv = new CSVToJson();
         boolean success = false;
-        try {
-            success = csv.convertCSVToJson(filelocation);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (CsvValidationException e) {
-            throw new RuntimeException(e);
-        }
+        success = csv.convertCSVToJson(filelocation);
         if(success){
             JOptionPane.showMessageDialog(this, "CSV file converted to JSON successfully!");
         } else {
