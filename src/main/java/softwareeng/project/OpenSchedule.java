@@ -111,7 +111,11 @@ public class OpenSchedule extends JFrame {
             File selectedFile = fileChooser.getSelectedFile();
 
             if (selectedFile.getName().endsWith(".csv")) {
+<<<<<<< Updated upstream
                     openCSV(selectedFile);
+=======
+                openCSV(selectedFile);
+>>>>>>> Stashed changes
             } else {
                 JOptionPane.showMessageDialog(this, "The selected file is not a CSV file.", "Error", JOptionPane.ERROR_MESSAGE);
                 openCSVSchedule(); // restart the file chooser
@@ -128,7 +132,11 @@ public class OpenSchedule extends JFrame {
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             if (selectedFile.getName().endsWith(".json")) {
+<<<<<<< Updated upstream
                     openJson(selectedFile);
+=======
+                openJson(selectedFile);
+>>>>>>> Stashed changes
             } else {
                 JOptionPane.showMessageDialog(this, "The selected file is not a json file.", "Error", JOptionPane.ERROR_MESSAGE);
                 openJSonSchedule(); // restart the file chooser
@@ -181,7 +189,11 @@ public class OpenSchedule extends JFrame {
         jsonInfo.add(scrollPane);
         jsonInfo.add(panel);
 
+<<<<<<< Updated upstream
        jsonInfo.setVisible(true);
+=======
+        jsonInfo.setVisible(true);
+>>>>>>> Stashed changes
 
     }
 
