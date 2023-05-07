@@ -7,15 +7,11 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.MalformedURLException;
-import java.net.StandardSocketOptions;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.text.FieldPosition;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -50,7 +46,7 @@ public class Web {
 	 * @param url objeto URL contendo o endereço a ser lido
 	 * @throws IOException se houver algum erro de I/O durante a leitura da URL
 	 */
-	public String URLToList(URL url) throws IOException {
+	private String URLToList(URL url) throws IOException {
 
 		URLConnection connection = url.openConnection();
 		//lê cada linha
@@ -104,14 +100,13 @@ public class Web {
 	*Converte uma String no formato de horário em JSON.
 	*@param fileContent a String a ser convertida em JSON.
 	*/
-	public void StringTOJson(String fileContent) {
+	private void StringTOJson(String fileContent) {
 		System.out.println("teste1");
 
 		String[] subString1 = fileContent.split("SUMMARY:");
 		List<Session> array = new ArrayList<>();
 		for(String s : subString1){
 			if(!(s.startsWith("Exame:") || s.startsWith("Teste:") || s.startsWith("Avaliação Contínua:") || s.indexOf("-") == -1)){
-				//System.out.println(s);
 				try {
 					Session session = createSession(s);
 					array.add(session);
@@ -120,8 +115,6 @@ public class Web {
 				}
 			}
 		}
-		System.out.println("Tamanho do session " + array.size());
-		System.out.println("teste2");
 		new CSVToJson().convertArrayToJson(array,"horarioWebcall.json");
 	}
 
@@ -130,7 +123,7 @@ public class Web {
 	*@param fileContent String contendo o conteúdo do arquivo Horario a ser convertido.
 	*@throws RuntimeException caso ocorra um erro durante a conversão.
 	*/
-	public void StringToCsv(String fileContent){
+	private void StringToCsv(String fileContent){
 		StringTOJson(fileContent);
 		try {
 			new JSonToCSV("horario.json");
@@ -198,11 +191,11 @@ public class Web {
 
 
 	public void URLToCSV(URL url) throws IOException{
-
+			StringToCsv(URLToList(url));
 	}
 
 	public void URLToJson(URL url) throws IOException {
-
+				StringToCsv(URLToList(url));
 	}
 
 	/**
