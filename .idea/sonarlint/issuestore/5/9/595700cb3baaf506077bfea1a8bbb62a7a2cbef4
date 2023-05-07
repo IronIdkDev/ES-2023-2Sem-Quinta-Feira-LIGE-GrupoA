@@ -1,11 +1,15 @@
 
-„
-java:S4165E"bRemove this useless assignment; "list" already holds the assigned value along all execution paths.(©ºë»ùÿÿÿÿ8õÛê›ü0
-Z
-java:S1854)"8Remove this useless assignment to local variable "file".(€§¶‚üÿÿÿÿ8øÛê›ü0
-K
-java:S1481)")Remove this unused "file" local variable.(€§¶‚üÿÿÿÿ8úÛê›ü0
+{
+java:S2293w"YReplace the type specification in this constructor call with the diamond operator ("<>").(›‚ÚÅÿÿÿÿÿ8îé¬ÿ0
+e
+java:S3824v"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(ü„¹æ8¬é¬ÿ0
+]	java:S1257"<This block of commented-out lines of code should be removed.(Æ£²¼ùÿÿÿÿ8Êé¬ÿ0
+Z	java:S106d"9Replace this use of System.out or System.err by a logger.(×µ²ÿıÿÿÿÿ8äé¬ÿ0
 N
 java:S1128"1Remove this unused import 'com.google.gson.Gson'.(–§8€Üê›ü0
+F
+java:S1128")Remove this unused import 'java.io.File'.(†Ğ¥Å8Šé¬ÿ0
 \
 java:S1128":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ8€Üê›ü0
+L
+java:S1068"*Remove this unused "LOGGER" private field.(Û¤¿Ôúÿÿÿÿ8é¬ÿ0
