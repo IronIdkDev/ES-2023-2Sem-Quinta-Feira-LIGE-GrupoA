@@ -105,6 +105,7 @@ public class JSonToCSV{
         }
     }
 
+    
     /**
      * Converte um arquivo JSON em uma lista de objetos Session.
      * @param path o caminho para o arquivo JSON a ser convertido.

@@ -45,6 +45,7 @@ public class LoadSchedules extends JFrame {
         setLocationRelativeTo(null);
     }
     
+    
     /**
      * Converte uma URL para CSV e JSON, se possível.
      * @param url a URL que será convertida
