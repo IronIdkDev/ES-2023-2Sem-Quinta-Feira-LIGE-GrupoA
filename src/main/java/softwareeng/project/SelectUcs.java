@@ -228,7 +228,6 @@ public class SelectUcs extends JFrame{
 		setSize(350, 150);
 	}
 
-
 	private void showScheduleButton(){
 
 	}

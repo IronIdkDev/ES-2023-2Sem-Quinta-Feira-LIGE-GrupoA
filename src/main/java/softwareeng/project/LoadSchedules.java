@@ -47,7 +47,6 @@ public class LoadSchedules extends JFrame {
     
     /**
      * Converte uma URL para CSV e JSON, se possível.
-     *
      * @param url a URL que será convertida
      * @throws MalformedURLException se a URL fornecida estiver malformada
      * @throws IOException se ocorrer um erro ao ler ou gravar dados da URL
