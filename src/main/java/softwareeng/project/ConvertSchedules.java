@@ -205,6 +205,7 @@ public class ConvertSchedules extends JFrame {
             if(success){
                 BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\carol\\OneDrive\\Ambiente de Trabalho\\rafetelvino@gmail.com.csv"));
                 String line;
+
                 while ((line = reader.readLine()) != null) {
                     System.out.println(line); // Imprime cada linha na console
                 }

@@ -6,6 +6,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MainMenu extends JFrame {
+
+
     private final JButton openSchedulesButton;
     private final JButton convertSchedulesButton;
     private final JButton loadSchedulesButton;

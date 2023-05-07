@@ -26,6 +26,8 @@ public class IcsToJson {
         this.filePath = filePath;
     }
 
+
+
     public boolean convertFile() throws IOException, ParseException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
