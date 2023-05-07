@@ -17,6 +17,9 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JScrollPane;
 
+/**
+*A classe SelectUcs é uma subclasse de JFrame que representa a janela responsável por selecionar Ucs.
+*/
 
 public class SelectUcs extends JFrame{
 	
@@ -61,6 +64,9 @@ public class SelectUcs extends JFrame{
           
         }
 
+    /**
+    *Inicializa e configura os componentes da interface gráfica.
+    */
 	private void initComponents() {
 		int buttonSize = 48;
 		selectFileButton = new JButton("Convert your File");
@@ -102,6 +108,9 @@ public class SelectUcs extends JFrame{
 	}
 	
 
+	/**
+	*Define e organiza o layout dos componentes na interface gráfica do usuário.
+	*/
 	private void layoutComponents() {
 		// Use a Box layout instead of a GridLayout
 	    setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
@@ -131,6 +140,9 @@ public class SelectUcs extends JFrame{
 		
 	}
 	
+	/**
+	*Adiciona os listeners aos botões da interface gráfica.
+	*/
 	private void addListeners() {
 		backButton.addActionListener(e -> backButtonClicked());
 		selectFileButton.addActionListener(e -> {
@@ -144,6 +156,12 @@ public class SelectUcs extends JFrame{
 
 	private List<String> selectedUCs;
 
+	/**
+	*Abre um diálogo de seleção de arquivo para o usuário selecionar um arquivo CSV ou JSON contendo as UCs para adicionar ao cronograma.
+	*Se o arquivo selecionado for válido, o método inicializa um novo objeto Horario, obtém a lista de UCs do arquivo e cria um JCheckBox para cada UC para ser exibido na GUI.
+	*@param lança CsvValidationException se ocorrer um erro ao analisar o arquivo CSV
+	*@param lança IOException se ocorrer um erro de E/S ao ler o arquivo CSV
+	*/
 	private void selectFileButtonClicked() throws CsvValidationException, IOException {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -192,6 +210,10 @@ public class SelectUcs extends JFrame{
 		}
 	}
 
+	/**
+	*Executa as ações necessárias quando o botão "Finish" é clicado.
+	*O método chama o método horarioFile da classe Horario para criar um arquivo contendo as UCs selecionadas.
+	*/
 	private void finishButtonClicked(){
 		h.horarioFile(selectedUCs);
 		for (Component comp : checkBoxPanel.getComponents()) {
@@ -211,6 +233,9 @@ public class SelectUcs extends JFrame{
 
 	}
 
+	/**
+	*Cria um novo objeto JButton para confirmar as escolhas do usuário das UCs a serem adicionadas à grade de horários.
+	*/
 	private void createFinishButton() {
 		int buttonSize = 48;
 		finishButton = new JButton("Confirm Choices");
@@ -226,7 +251,9 @@ public class SelectUcs extends JFrame{
 
 
 
-
+	/**
+	*Método responsável por fechar a janela atual e exibir a janela do Menu Principal quando o botão "backButton" é clicado.
+	*/
 	private void backButtonClicked() {
         if (this.isVisible()) {
             dispose();

@@ -8,6 +8,9 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+*A classe LoadSchedules é uma subclasse de JFrame que representa a janela responsável por carregar horários.
+*/
 public class LoadSchedules extends JFrame {
 
     private JButton backButton;
@@ -41,6 +44,14 @@ public class LoadSchedules extends JFrame {
         addListeners();
         setLocationRelativeTo(null);
     }
+    
+    /**
+     * Converte uma URL para CSV e JSON, se possível.
+     *
+     * @param url a URL que será convertida
+     * @throws MalformedURLException se a URL fornecida estiver malformada
+     * @throws IOException se ocorrer um erro ao ler ou gravar dados da URL
+     */
 
     public void convertUrl(String url) {
         if (url.startsWith(WEB_CAL)) {
@@ -69,8 +80,13 @@ public class LoadSchedules extends JFrame {
             }
         }
     }
-
-
+    
+    /**
+    *Salva o conteudo do URL para um ficheiro local.
+    *@param url O URL para fazer o download e salvar.
+    *@throws MalformedURLException if the URL is malformed
+    *@throws IOException if an I/O error occurs while reading or writing to the file
+    */
     public void saveUrl(String url) {
         if (url.startsWith(WEB_CAL)) {
             Web web = new Web();
@@ -97,7 +113,9 @@ public class LoadSchedules extends JFrame {
 
 
 
-
+    /**
+    *Inicializa e configura os componentes da interface gráfica.
+    */
     private void initComponents() {
 
         backButton = new JButton();
@@ -122,7 +140,10 @@ public class LoadSchedules extends JFrame {
         add(buttonPanel);
 
     }
-
+    
+    /**
+    *Define e organiza o layout dos componentes na interface gráfica do usuário.
+    */
     private void layoutComponents() {
         // Use a Box layout instead of a GridLayout
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
@@ -151,6 +172,9 @@ public class LoadSchedules extends JFrame {
     }
 
 
+    /**
+    *Adiciona os listeners aos botões da interface gráfica.
+    */
     private void addListeners() {
         backButton.addActionListener(e -> backButtonClicked());
         insertSaveButton.addActionListener(e -> {
@@ -231,7 +255,9 @@ public class LoadSchedules extends JFrame {
         });
     }
 
-
+    /**
+    *Método responsável por fechar a janela atual e exibir a janela do Menu Principal quando o botão "backButton" é clicado.
+    */
     private void backButtonClicked() {
         if (this.isVisible()) {
             dispose();
@@ -240,13 +266,26 @@ public class LoadSchedules extends JFrame {
         }
     }
 
+    /**
+    *Retorna o botão "OK".
+    *@return o botão "OK".
+    */
     public JButton getOkButton() {
         return okButton;
     }
-
+    
+    /**
+    Retorna o botão "OK1".
+    @return o botão "OK1".
+    */
     public JButton getOkButton1() {
         return okButton1;
     }
+    
+    /**
+    *Retorna a URL atualmente armazenada no objeto.
+    *@return a URL armazenada.
+    */
     public String getUrl() {
         return url;
     }

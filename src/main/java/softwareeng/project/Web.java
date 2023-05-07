@@ -13,10 +13,15 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
-
+/**
+*Classe para ler, baixar e converter conteúdo de páginas web.
+*/
 public class Web {
 
-	//usamos a classe URL para criar uma conexão com a página web e a classe BufferedReader para ler o conteúdo da página linha por linha
+	/**
+	*Lê o conteúdo da página da URL fornecida e imprime uma mensagem de sucesso se a leitura for bem sucedida.
+	*@param url a URL da página a ser lida
+	*/
 	public void ReadWeb(URL url) {
 		try {
 			BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -30,7 +35,11 @@ public class Web {
 	}
 
 
-	//class URLToCSV recebe um URL e transforma em CSV
+	/**
+	*Faz o download do conteúdo de uma página na web a partir da URL especificada e o converte em um arquivo CSV.
+	*@param url a URL da página a ser baixada e convertida em um arquivo CSV
+	*@throws IOException se ocorrer um erro de I/O ao baixar, analisar ou gravar o conteúdo da página
+	*/
 	public void URLToCSV(URL url) throws IOException{
 
 		//usa uma conexão URLConnection para baixar o conteúdo da página
@@ -57,7 +66,12 @@ public class Web {
 		}
 		reader.close();
 	}
-
+	
+	/**
+	*Converte o conteúdo de um arquivo JSON a partir da URL fornecida e salva-o em um arquivo local.
+	*@param url a URL do arquivo JSON a ser convertido e salvo
+	*@throws IOException se ocorrer um erro de I/O durante a leitura ou gravação do arquivo JSON
+	*/
 	public void URLToJson(URL url) throws IOException {
 		URLConnection connection = url.openConnection();
 		BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -80,6 +94,11 @@ public class Web {
 		reader.close();
 	}
 
+	/**
+	*Faz o download do conteúdo de uma página web a partir da URL fornecida e salva-o em um arquivo local com o nome "web_content.txt".
+	*@param url a URL da página web de onde baixar o conteúdo
+	*@throws IOException se ocorrer um erro de I/O durante a leitura ou gravação do conteúdo da página web
+	*/
 	public void downloadWebContent(URL url) throws IOException {
 		URLConnection connection = url.openConnection();
 		BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
